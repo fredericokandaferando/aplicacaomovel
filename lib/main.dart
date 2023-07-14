@@ -4,8 +4,8 @@ import 'package:aplicacaomovel/register/home_usuario.dart';
 void main()=>runApp(
     const MaterialApp(
       debugShowCheckedModeBanner: false,
-       //home: home_usuarioRegister(),
-       home: home_pricipalpage(),
+       home: home_usuarioRegister(),
+      // home: home_pricipalpage(),
    // home:HomePage(),
   
     ),

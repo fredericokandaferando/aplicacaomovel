@@ -5,8 +5,8 @@ void main()=>runApp(
     const MaterialApp(
       debugShowCheckedModeBanner: false,
        //home: home_usuarioRegister(),
-       //home: home_pricipalpage(),
-    home:HomePage(),
+       home: home_pricipalpage(),
+   // home:HomePage(),
   
     ),
 );

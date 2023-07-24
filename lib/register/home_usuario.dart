@@ -12,7 +12,7 @@ class _home_usuarioRegisterState extends State<home_usuarioRegister> {
   TextEditingController nomeController = TextEditingController();
    TextEditingController emailController = TextEditingController();
     TextEditingController senhaController = TextEditingController();
-
+ final _formKey = GlobalKey<FormState>();
     //create the service class object
     Service service = Service();
      
@@ -22,76 +22,108 @@ class _home_usuarioRegisterState extends State<home_usuarioRegister> {
     return Scaffold(
      
        appBar: AppBar(
-        title:Text('Cadastra-te no BikeShared'),
+        title:const Text('Cadastra-te no BikeShared'),
         centerTitle:true,
-         backgroundColor: Color.fromARGB(255, 135, 3, 135),
+         backgroundColor: const Color.fromARGB(255, 135, 3, 135),
        ),
       body: Container(
-        padding:EdgeInsets.all(20),
+        padding:const EdgeInsets.all(20),
+        child:Form(
+
+          key: _formKey,
+
+      
         child: ListView(
           children: [
             
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            TextField(
+            TextFormField(
               controller: nomeController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border:OutlineInputBorder(
       
                 ),
-                hintText: 'Digite o Nome',
+                hintText: 'Nome',
                     hintStyle:TextStyle(color: Color.fromARGB(255, 135, 3, 135)),
               ),
+              validator:(nome){
+                if(nome==null || nome.isEmpty){
+                  return 'Digite o Nome';
+                }
+                return null;
+
+              }
             ),
            
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            TextField(
+            TextFormField(
               controller: emailController ,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border:OutlineInputBorder(
       
                 ),
-                hintText: 'Digite o Email',
+                hintText: 'Email',
                     hintStyle:TextStyle(color: Color.fromARGB(255, 135, 3, 135)),
               ),
+              validator: (email){
+                if(email==null || email.isEmpty){
+                  return 'Digite o Email';
+                }
+                return null;
+              },
             ),
          
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            TextField(
+            TextFormField(
                obscureText: true,
               controller: senhaController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border:OutlineInputBorder(
       
                 ),
-                hintText: 'Digite a Senha',
+                hintText: 'Senha',
                 hintStyle:TextStyle(color: Color.fromARGB(255, 135, 3, 135)),
               ),
+              validator: (senha){
+                if(senha == null || senha.isEmpty){
+                  return'Digite a Senha';
+                }
+                else if(senha.length<5){
+                  return'Digite uma senha mais forte';
+
+                }
+                return null;
+              },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-           ElevatedButton(onPressed: (){           
+           ElevatedButton(onPressed: (){ 
+            if(_formKey.currentState!.validate()){
+          
             service.saveUser(nomeController.text, 
             emailController.text,
              senhaController.text, 
              10, 
              2);
+           
+           }
            },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 135, 3, 135)
+          ),
           
-           child:Text('Registar',
+           child:const Text('Registar',
          style:TextStyle(
           fontSize: 20,
          )
            ) ,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 135, 3, 135)
-          ),
            )
            
           ],
@@ -100,7 +132,7 @@ class _home_usuarioRegisterState extends State<home_usuarioRegister> {
           ),
       ),
 
-
+      )
     );
   }
 }

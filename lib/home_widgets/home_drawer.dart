@@ -7,7 +7,7 @@ return Drawer(
   child: ListView(
     padding: EdgeInsets.zero,
     children:[
-      UserAccountsDrawerHeader(
+      const UserAccountsDrawerHeader(
         decoration: BoxDecoration(color:Color.fromARGB(255, 131, 3, 131)),
         accountName :Text("Frederico Kanda"),
         accountEmail: Text("frederico@gmail.com"),
@@ -25,7 +25,7 @@ return Drawer(
       ListTile(
         leading: const Icon(Icons.search,color:Color.fromARGB(255, 131, 3, 131)
         ),
-        title: Text(
+        title: const Text(
           "Localizar Estação"
         ),
         
@@ -38,7 +38,7 @@ return Drawer(
        ListTile(
         leading: const Icon(Icons.bike_scooter_rounded,color:Color.fromARGB(255, 131, 3, 131)
         ),
-        title: Text(
+        title: const Text(
           "Levantar Bicicleta"
         ),
           onTap: (){
@@ -49,7 +49,7 @@ return Drawer(
         ListTile(
         leading: const Icon(Icons.bike_scooter_rounded,color:Color.fromARGB(255, 131, 3, 131)
         ),
-        title: Text(
+        title: const Text(
           "Devolver Bicicleta"
         ),
           onTap: (){
@@ -60,7 +60,7 @@ return Drawer(
         ListTile(
         leading: const Icon(Icons.balance,color:Color.fromARGB(255, 131, 3, 131)
         ),
-        title: Text(
+        title: const Text(
           "Consultar Saldo"
         ),
           onTap: (){
@@ -72,7 +72,7 @@ return Drawer(
         ListTile(
         leading: const Icon(Icons.settings,color:Color.fromARGB(255, 131, 3, 131)
         ),
-        title: Text(
+        title: const Text(
           "Definições"
         ),
           onTap: (){
@@ -84,7 +84,7 @@ return Drawer(
         ListTile(
         leading: const Icon(Icons.info,color:Color.fromARGB(255, 131, 3, 131)
         ),
-        title: Text(
+        title: const Text(
           "Info"
         ),
           onTap: (){
@@ -96,7 +96,7 @@ return Drawer(
         ListTile(
         leading: const Icon(Icons.arrow_back_sharp,color:Color.fromARGB(255, 131, 3, 131)
         ),
-        title: Text(
+        title: const Text(
           "Sair"
         ),
           onTap: (){

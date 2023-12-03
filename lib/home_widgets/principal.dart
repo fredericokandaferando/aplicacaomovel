@@ -12,9 +12,6 @@ import 'package:aplicacaomovel/Estacao/telaListaEstacao.dart';
 
 import 'package:aplicacaomovel/register/ListaUsuario.dart';
 import 'package:aplicacaomovel/register/geolo_page.dart';
-import '../Estacao/select.dart';
-import '../Estacao/telaDevolverBina.dart';
-import '../Estacao/telaLevantarbina.dart';
 import '../valores/shered_preference.dart';
 class Userlog extends StatefulWidget {
   const Userlog ({super.key});
@@ -32,7 +29,6 @@ class UserlogState extends State<Userlog> {
       throw Exception('Falha ao carregar informações do usuário');
     }
   }
-
   Widget build(BuildContext context){
       String email = MySharedPreferences.useremail;
    
@@ -87,7 +83,7 @@ class UserlogState extends State<Userlog> {
       )  , 
        
       ListTile(
-        leading: const Icon(Icons.list_alt,color:Color.fromARGB(255, 131, 3, 131)
+        leading: const Icon(Icons.search,color:Color.fromARGB(255, 131, 3, 131)
         ),
         title: const Text(
           "Listar Estações"
@@ -107,7 +103,7 @@ class UserlogState extends State<Userlog> {
         ),
           onTap: (){
           // ignore: prefer_const_constructors
-           Navigator.of(context).push(MaterialPageRoute(builder: (context)=> levantamento()),) ;
+   
         },
        ),
         ListTile(
@@ -118,7 +114,7 @@ class UserlogState extends State<Userlog> {
         ),
           onTap: (){
           // ignore: prefer_const_constructors
-           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ListaEstacaoDevolver()),) ;
+           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>home_usuarioRegister()),) ;
         },
        ),
         ListTile(
@@ -129,11 +125,11 @@ class UserlogState extends State<Userlog> {
         ),
           onTap: (){
           // ignore: prefer_const_constructors
-           Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Logalizacao()),) ;
+           Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserInfoPage()),) ;
         },
        ),
           ListTile(
-        leading: const Icon(Icons.list_alt,color:Color.fromARGB(255, 131, 3, 131)
+        leading: const Icon(Icons.list,color:Color.fromARGB(255, 131, 3, 131)
         ),
         title: const Text(
           "Lista Usuario"
@@ -156,7 +152,17 @@ class UserlogState extends State<Userlog> {
         },
         ),
 
-       
+        ListTile(
+        leading: const Icon(Icons.info,color:Color.fromARGB(255, 131, 3, 131)
+        ),
+        title: const Text(
+          "Info"
+        ),
+          onTap: (){
+          // ignore: prefer_const_constructors
+           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Logalizacao()),) ;
+        },
+       ),
        
         ListTile(
         leading: const Icon(Icons.arrow_back_sharp,color:Color.fromARGB(255, 131, 3, 131)

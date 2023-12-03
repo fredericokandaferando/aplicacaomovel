@@ -1,24 +1,32 @@
+import 'package:aplicacaomovel/valores/shered_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicacaomovel/register/home_usuario.dart';
-import  'package:aplicacaomovel/serviceLogin.dart';
-import 'package:aplicacaomovel/register/test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:aplicacaomovel/serviceLogin.dart';  
+//import 'package:aplicacaomovel/register/loginsoap.dart'; 
 import 'package:aplicacaomovel/register/geolo_page.dart';
 import 'package:aplicacaomovel/register/googlemap.dart';
+import 'package:aplicacaomovel/register/wifidirect.dart';
+import 'package:aplicacaomovel/home_widgets/home_pricipalpage.dart';
 void main() => runApp(
       const MaterialApp(debugShowCheckedModeBanner: false,
-           //home: HomePage(),
+           home: HomePage(),
             // home: MyApp(),
+            // home: home_pricipalpage(),
            //home:GoogleMapScreen(),
-          home:logalizacao(),
-          //home: home_usuarioRegister(),
+          //home:logalizacao(),
+         //home: home_usuarioRegister(),       
       ),
-    );
+);
  TextEditingController emailControllerr = TextEditingController();
  TextEditingController passworControllerr = TextEditingController();
  Services servicelogin = Services();
  final _formKey = GlobalKey<FormState>();
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+  void initState(){
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +38,7 @@ class HomePage extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Color.fromARGB(172, 151, 2, 171),
+              Color.fromARGB(172, 161, 44, 176),
               Color.fromARGB(156, 135, 2, 129),
               Color.fromARGB(255, 124, 3, 190),
               Color.fromARGB(255, 166, 17, 230),
@@ -150,11 +158,8 @@ class HomePage extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () {
                           if(_formKey.currentState!.validate()){
-
                              servicelogin.loginUser(emailControllerr.text,passworControllerr.text,context);   
-                         
-
-
+                             MySharedPreferences.useremail =emailControllerr.text;
                           }
                           //Navigator.of(context).push(
                            // MaterialPageRoute(
@@ -210,4 +215,12 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+ void salvarLogin(Services servi)async{
+
+  SharedPreferences prefs= await SharedPreferences.getInstance();
+
+  prefs.setString("login_usuario",servi.toString());
+
+
+ }
 }

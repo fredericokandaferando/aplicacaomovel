@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:aplicacaomovel/service.dart';
+
+import '../valores/shered_preference.dart';
 class home_usuarioRegister extends StatefulWidget {
   const home_usuarioRegister({super.key});
 
@@ -111,8 +113,8 @@ class _home_usuarioRegisterState extends State<home_usuarioRegister> {
             emailController.text,
              senhaController.text, 
              10, 
-             2);
-           
+             2,context);
+            MySharedPreferences.useremail =emailController.text;
            }
            },
           style: ElevatedButton.styleFrom(

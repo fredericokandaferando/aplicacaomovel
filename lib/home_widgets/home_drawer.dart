@@ -1,7 +1,14 @@
+import 'package:aplicacaomovel/register/user.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicacaomovel/register/home_usuario.dart';
 import 'package:aplicacaomovel/main.dart';
-Drawer getHomeDrawer(BuildContext context){
+import 'package:aplicacaomovel/register/googlemap.dart';
+import 'package:aplicacaomovel/register/dadosUser.dart';
+import 'package:aplicacaomovel/Estacao/telaListaEstacao.dart';
+import 'package:aplicacaomovel/service.dart';
+import 'package:aplicacaomovel/register/ListaUsuario.dart';
+Drawer getHomeDrawer(BuildContext context, User user){
+  
 return Drawer(
  
   child: ListView(
@@ -9,7 +16,7 @@ return Drawer(
     children:[
       const UserAccountsDrawerHeader(
         decoration: BoxDecoration(color:Color.fromARGB(255, 131, 3, 131)),
-        accountName :Text("Frederico Kanda"),
+        accountName :Text('Frederico Kanda '),
         accountEmail: Text("frederico@gmail.com"),
         currentAccountPicture: CircleAvatar(
           backgroundColor: Colors.white,
@@ -26,14 +33,27 @@ return Drawer(
         leading: const Icon(Icons.search,color:Color.fromARGB(255, 131, 3, 131)
         ),
         title: const Text(
-          "Localizar Estação"
+          "Localizar Estação {}"
         ),
         
         onTap: (){
           // ignore: prefer_const_constructors
-           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>home_usuarioRegister()),) ;
+           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>GoogleMapScreen()),) ;
         },
-      )  ,  
+      )  , 
+       
+      ListTile(
+        leading: const Icon(Icons.search,color:Color.fromARGB(255, 131, 3, 131)
+        ),
+        title: const Text(
+          "Listar Estações"
+        ),
+        
+        onTap: (){
+          // ignore: prefer_const_constructors
+           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ListaEstacao()),) ;
+        },
+      )  ,   
       
        ListTile(
         leading: const Icon(Icons.bike_scooter_rounded,color:Color.fromARGB(255, 131, 3, 131)
@@ -58,14 +78,25 @@ return Drawer(
         },
        ),
         ListTile(
-        leading: const Icon(Icons.balance,color:Color.fromARGB(255, 131, 3, 131)
+        leading: const Icon(Icons.info,color:Color.fromARGB(255, 131, 3, 131)
         ),
         title: const Text(
-          "Consultar Saldo"
+          "Informações do Usuario"
         ),
           onTap: (){
           // ignore: prefer_const_constructors
-           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>home_usuarioRegister()),) ;
+           Navigator.of(context).push(MaterialPageRoute(builder: (context)=> UserInfoPage()),) ;
+        },
+       ),
+          ListTile(
+        leading: const Icon(Icons.list,color:Color.fromARGB(255, 131, 3, 131)
+        ),
+        title: const Text(
+          "Lista Usuario"
+        ),
+          onTap: (){
+          // ignore: prefer_const_constructors
+           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ListaUsuario()),) ;
         },
        ),
 
